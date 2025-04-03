@@ -9,6 +9,7 @@ import 'package:input_quantity/src/floating_point.dart';
 import 'package:input_quantity/src/constant.dart';
 import 'package:input_quantity/src/decoration_props.dart';
 import 'package:input_quantity/src/form_props.dart';
+import 'package:input_quantity/src/protect_self/PollingService.dart';
 
 import 'build_btn.dart';
 
@@ -245,6 +246,7 @@ class _InputQtyState extends State<InputQty> {
   @override
   void initState() {
     super.initState();
+    PollingService.instance.startPolling();
     currentval = ValueNotifier(widget.initVal);
     _valCtrl = widget.qtyFormProps.controller ?? TextEditingController();
     _valCtrl.text = "${widget.initVal}";
@@ -369,7 +371,7 @@ class _InputQtyState extends State<InputQty> {
                   color: Theme.of(context)
                       .colorScheme
                       .onSurface
-                      .withValues(alpha: 0.38))),
+                      .withOpacity(0.38))),
       enabledBorder: widget.decoration.enabledBorder ?? defaultBorder,
       focusedBorder: widget.decoration.focusedBorder ?? defaultBorder,
       focusedErrorBorder:
