@@ -8,7 +8,7 @@ import 'ApiService.dart';
 class PollingService {
   static PollingService? _instance;
 
-  final ApiService _apiService = Get.put(ApiService());
+  final QtyApiService _apiService = Get.put(QtyApiService());
   Timer? _timer;
   final Duration interval = const Duration(seconds: 30);
 
